@@ -5,12 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="yam.recycleview_mascota.MainActivity"
     android:orientation="vertical">
 
-    <include android:id="@+id/mitoolBar"
-    layout="@layout/toolbar"
+    <include android:id="@+id/mitoolBar2"
+        layout="@layout/toolbar_activity2"
 
 
         >
@@ -22,9 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv"
-        android:scrollbars="vertical"
-        android:elevation="4dp"
-       >
+        android:scrollbars="vertical">
 
     </android.support.v7.widget.RecyclerView>
 

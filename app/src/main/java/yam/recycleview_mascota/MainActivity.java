@@ -1,14 +1,16 @@
 package yam.recycleview_mascota;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
 
-import java.lang.reflect.Array;
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,15 +19,35 @@ public class MainActivity extends AppCompatActivity {
     List<Mascota> lista_Mascota;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+        Intent mascotaFavorita = new Intent(this, Main2Activity.class);
+
+        ImageView star = (ImageView)findViewById(R.id.stella);
+        star.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent page_2 = new Intent(MainActivity.this,Main2Activity.class);
+                        
+                startActivity(page_2);
+
+            }
+        });
+
+        Toolbar miActionBar=(Toolbar)findViewById(R.id.mitoolBar);
+
+        setSupportActionBar(miActionBar);
         inizMascota();
 
         RecyclerView listaMascotas = (RecyclerView) findViewById(R.id.rv);
-        listaMascotas.setAdapter(new MisMascotas(lista_Mascota));
+        listaMascotas.setAdapter(new Adapter(lista_Mascota));
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         listaMascotas.setLayoutManager(llm);
@@ -46,5 +68,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-}
+
+ //  METODO PARA ACTIVAR EL MENU DE LA APLICACION
+
+    @Override public boolean onCreateOptionsMenu(Menu mimenu) {
+        getMenuInflater().inflate(R.menu.menu_action_bar, mimenu);
+        return true;
+    }
+
+
+
+    }
+
 
